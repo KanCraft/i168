@@ -2,7 +2,9 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
+  Alert,
   View,
+  TouchableHighlight,
   WebView,
   Dimensions,
   StatusBar,
@@ -31,7 +33,7 @@ const config = (() => {
   if (deviceWidth / deviceHeight > official.ratio) {
     game.width = Math.round(deviceHeight * official.ratio);
   } else {
-    game.height = Math.raound(deviceWidth / official.ratio);
+    game.height = Math.round(deviceWidth / official.ratio);
   }
   return {
     game,
@@ -46,9 +48,19 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <View style={styles.padding}></View>
+        <View style={styles.padding}>
+          <View style={{flex: 1}}>
+            <TouchableHighlight style={{alignItems: "center", padding: 12}} onLongPress={this._askReload.bind(this)}>
+              <Text style={{color:"#fff"}}>{'Reload'}</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={{alignItems: "center", padding: 12}} onLongPress={this._askReload.bind(this)}>
+              <Text style={{color:"#fff"}}>{"なんか\n便利機能"}</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
         <View style={styles.main}>
           <WebView
+            ref={ref => this.webview = ref}
             source={{uri: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"}}
             style={styles.webview}
             javaScriptEnabled={true}
@@ -61,6 +73,20 @@ export default class App extends React.Component {
         <View style={styles.padding}></View>
       </View>
     );
+  }
+
+  _askReload() {
+    // if (!this.webview) return;
+    // Alert.alert("hoge")
+    Alert.alert(
+      'Reload?',
+      'Press "Yes" to reload this web page',
+      [
+        {text: 'Yes, reload', onPress: () => this.webview.reload()},
+        {text: 'Cancel', style: 'cancel'}
+      ],
+      { cancelable: true }
+    )
   }
 }
 
