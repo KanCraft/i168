@@ -5,52 +5,48 @@ import {
   View,
   WebView,
   Dimensions,
+  StatusBar,
 } from 'react-native';
 
 import {
-  ScreenOrientation, 
+  ScreenOrientation,
 } from 'expo';
 
-// const official = {
-//   width: 1200,
-//   height: 720,
-//   ratio: 1200/720,
-// }
+const official = {
+  width: 1200,
+  height: 720,
+  ratio: 1200/720,
+  top: 77, // ナビゲーションバーと謎の余白の合計
+}
 
+ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE_LEFT);
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
-// const config = (() => {
-//   const top = 32;
-//   if (deviceWidth / deviceHeight > official.ratio) {
-//     // 横長なので、縦に合わせる
-//     return {
-//       width: Math.floor(deviceHeight * official.ratio),
-//       height: deviceHeight,
-//       scale: 0.8,
-//       top,
-//     };
-//   } else {
-//     // 縦長なので、横にわせる
-//     return {
-//       width: deviceWidth,
-//       height: Math.floor(deviceWidth / official.ratio),
-//       scale: 0.8,
-//       top,
-//     };
-//   }
-// })();
+const config = (() => {
+  const game = {
+    width: deviceWidth,
+    height: deviceHeight,
+  };
+  if (deviceWidth / deviceHeight > official.ratio) {
+    game.width = Math.round(deviceHeight * official.ratio);
+  } else {
+    game.height = Math.raound(deviceWidth / official.ratio);
+  }
+  return {
+    game,
+    padding: {
+      width: (deviceWidth - game.width),
+    },
+  };
+})();
 
 export default class App extends React.Component {
-  componentDidMount() {
-    ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE_LEFT);
-  }
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.nav}>
-          <Text style={{color: "#fff"}}>iPhone SE</Text>
-        </View>
+        <StatusBar hidden />
+        <View style={styles.padding}></View>
         <View style={styles.main}>
           <WebView
             source={{uri: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"}}
@@ -59,9 +55,10 @@ export default class App extends React.Component {
             domStorageEnabled={true}
             startInLoadingState={false}
             scalesPageToFit={true}
-            injectedJavaScript="document.body.style.position = 'absolute'; document.body.style.top = '-74px';"
+            injectedJavaScript={`document.body.style.position = 'absolute'; document.body.style.top = '-77px';`}
           />
         </View>
+        <View style={styles.padding}></View>
       </View>
     );
   }
@@ -72,16 +69,17 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
-  nav: {
-    width: 60,
+  padding: {
+    width: Math.round(config.padding.width / 2),
     backgroundColor: "#222",
+    height: deviceHeight,
   },
   main: {
     flex: 1,
     backgroundColor: "blue",
   },
   webview: {
-    width: deviceWidth - 60,
+    width: deviceWidth - config.padding.width,
     height: deviceHeight,
   }
 });
