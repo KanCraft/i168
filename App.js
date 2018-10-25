@@ -11,49 +11,37 @@ import {
   ScreenOrientation, 
 } from 'expo';
 
-const official = {
-  width: 1200,
-  height: 720,
-  ratio: 1200/720,
-}
+// const official = {
+//   width: 1200,
+//   height: 720,
+//   ratio: 1200/720,
+// }
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
-const config = (() => {
-  const top = 32;
-  if (deviceWidth / deviceHeight > official.ratio) {
-    // 横長なので、縦に合わせる
-    return {
-      width: Math.floor(deviceHeight * official.ratio),
-      height: deviceHeight,
-      scale: 0.8,
-      top,
-    };
-  } else {
-    // 縦長なので、横にわせる
-    return {
-      width: deviceWidth,
-      height: Math.floor(deviceWidth / official.ratio),
-      scale: 0.8,
-      top,
-    };
-  }
-})();
+// const config = (() => {
+//   const top = 32;
+//   if (deviceWidth / deviceHeight > official.ratio) {
+//     // 横長なので、縦に合わせる
+//     return {
+//       width: Math.floor(deviceHeight * official.ratio),
+//       height: deviceHeight,
+//       scale: 0.8,
+//       top,
+//     };
+//   } else {
+//     // 縦長なので、横にわせる
+//     return {
+//       width: deviceWidth,
+//       height: Math.floor(deviceWidth / official.ratio),
+//       scale: 0.8,
+//       top,
+//     };
+//   }
+// })();
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      styles: StyleSheet.create({
-        webview: {
-          flex: 1,
-          width: deviceWidth,
-          height: deviceHeight
-        }
-      }),
-    };
-  }
   componentDidMount() {
     ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE_LEFT);
   }
