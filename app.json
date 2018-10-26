@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "komado",
-    "description": "This project is really great.",
-    "slug": "komado",
+    "name": "i168",
+    "description": "KanColleWidget for iPhone / Android",
+    "slug": "i168",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": ["ios", "android"],
@@ -21,7 +21,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.otiai10.i168",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.otiai10.i168"
     }
   }
 }
