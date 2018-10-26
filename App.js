@@ -13,6 +13,7 @@ import {
 import {
   ScreenOrientation,
 } from 'expo';
+import { RightBar, LeftMenuBar } from './src/MenuBar';
 
 const official = {
   width: 1200,
@@ -48,16 +49,10 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <View style={styles.padding}>
-          <View style={{flex: 1}}>
-            <TouchableHighlight style={{alignItems: "center", padding: 12}} onLongPress={this._askReload.bind(this)}>
-              <Text style={{color:"#fff"}}>{'Reload'}</Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={{alignItems: "center", padding: 12}} onLongPress={this._askReload.bind(this)}>
-              <Text style={{color:"#fff"}}>{"なんか\n便利機能"}</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
+        <LeftMenuBar
+          style={styles.padding}
+          reload={() => this.webview.reload()}
+        />
         <View style={styles.main}>
           <WebView
             ref={ref => this.webview = ref}
@@ -70,23 +65,11 @@ export default class App extends React.Component {
             injectedJavaScript={`document.body.style.position = 'absolute'; document.body.style.top = '-77px';`}
           />
         </View>
-        <View style={styles.padding}></View>
+        <RightBar
+          style={styles.padding}
+        />
       </View>
     );
-  }
-
-  _askReload() {
-    // if (!this.webview) return;
-    // Alert.alert("hoge")
-    Alert.alert(
-      'Reload?',
-      'Press "Yes" to reload this web page',
-      [
-        {text: 'Yes, reload', onPress: () => this.webview.reload()},
-        {text: 'Cancel', style: 'cancel'}
-      ],
-      { cancelable: true }
-    )
   }
 }
 
