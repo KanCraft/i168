@@ -21,7 +21,7 @@ const official = {
   top: 77, // ナビゲーションバーと謎の余白の合計
 }
 
-ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE_RIGHT);
+ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE);
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
