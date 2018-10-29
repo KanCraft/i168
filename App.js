@@ -13,7 +13,7 @@ import {
 import {
   ScreenOrientation,
 } from 'expo';
-import { RightBar, LeftMenuBar } from './src/MenuBar';
+import { MenuBar, NonsenseBar } from './src/MenuBar';
 
 const official = {
   width: 1200,
@@ -31,16 +31,25 @@ const config = (() => {
     width: deviceWidth,
     height: deviceHeight,
   };
+  const menubar = {
+    direction: "row",
+  };
   if (deviceWidth / deviceHeight > official.ratio) {
+    // 画面がゲーム領域より横長（バーは左右にに現れる）
     game.width = Math.round(deviceHeight * official.ratio);
+    menubar.direction = "row";
   } else {
+    // 画面がゲーム領域より縦長（バーは上下に現れる）
     game.height = Math.round(deviceWidth / official.ratio);
+    menubar.direction = "column";
   }
   return {
     game,
-    padding: {
-      width: (deviceWidth - game.width),
-    },
+    menubar: {
+      width:  (deviceWidth  - game.width),
+      height: (deviceHeight - game.height),
+      ...menubar,
+    }
   };
 })();
 
@@ -49,15 +58,11 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <LeftMenuBar
-          style={styles.padding}
-          reload={() => this.webview.reload()}
-        />
+        <MenuBar {...config.menubar} reload={() => this.webview.reload()} />
         <View style={styles.main}>
           <WebView
             ref={ref => this.webview = ref}
             source={{uri: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"}}
-            style={styles.webview}
             javaScriptEnabled={true}
             domStorageEnabled={true}
             startInLoadingState={false}
@@ -65,9 +70,7 @@ export default class App extends React.Component {
             injectedJavaScript={`document.body.style.position = 'absolute'; document.body.style.top = '-77px';`}
           />
         </View>
-        <RightBar
-          style={styles.padding}
-        />
+        <NonsenseBar {...config.menubar} />
       </View>
     );
   }
@@ -76,19 +79,10 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-  },
-  padding: {
-    width: Math.round(config.padding.width / 2),
-    backgroundColor: "#222",
-    height: deviceHeight,
+    flexDirection: config.menubar.direction,
   },
   main: {
     flex: 1,
     backgroundColor: "blue",
   },
-  webview: {
-    width: deviceWidth - config.padding.width,
-    height: deviceHeight,
-  }
 });

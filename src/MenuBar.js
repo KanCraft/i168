@@ -4,24 +4,34 @@ import {
   Text,
   TouchableHighlight,
   Alert,
+  StyleSheet,
 } from "react-native";
 
-export class LeftMenuBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      width: this.props.style.width,
-    };
-    alert(`${this.props.style}`)
-  }
+export class MenuBar extends Component {
   render() {
+    const styles = StyleSheet.create({
+      container: {
+        width:  this.props.direction == "row"    ? Math.round(this.props.width / 2)  : undefined,
+        height: this.props.direction == "column" ? Math.round(this.props.height / 2) : undefined,
+        backgroundColor: "#222",
+      },
+      items: {
+        flex: 1,
+        flexDirection: this.props.direction == "row" ? "column" : "row",
+      },
+      item: {
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 12,
+      },
+    });
     return (
-      <View style={this.props.style}>
-        <View style={{flex: 1}}>
-          <TouchableHighlight style={{alignItems: "center", padding: 12}} onLongPress={this._askReload.bind(this)}>
+      <View style={styles.container}>
+        <View style={styles.items}>
+          <TouchableHighlight style={styles.item} onLongPress={this._askReload.bind(this)}>
             <Text style={{color:"#fff"}}>{'Reload'}</Text>
           </TouchableHighlight>
-          <TouchableHighlight style={{alignItems: "center", padding: 12}} onLongPress={this._askReload.bind(this)}>
+          <TouchableHighlight style={styles.item} onLongPress={this._askReload.bind(this)}>
             <Text style={{color:"#fff"}}>{"なんか\n便利機能"}</Text>
           </TouchableHighlight>
         </View>
@@ -41,8 +51,15 @@ export class LeftMenuBar extends Component {
   }
 }
 
-export class RightBar extends Component {
+export class NonsenseBar extends Component {
   render() {
-    return <View style={this.props.style}></View>;
+    const styles = StyleSheet.create({
+      container: {
+        width:  this.props.direction == "row"    ? Math.floor(this.props.width / 2)  : undefined,
+        height: this.props.direction == "column" ? Math.floor(this.props.height / 2) : undefined,
+        backgroundColor: "#222",
+      },
+    });
+    return <View style={styles.container}></View>;
   }
 }
