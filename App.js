@@ -1,11 +1,7 @@
 import React from 'react';
 import {
-  StyleSheet,
-  Text,
-  Alert,
   View,
-  TouchableHighlight,
-  WebView,
+  StyleSheet,
   Dimensions,
   StatusBar,
 } from 'react-native';
@@ -14,6 +10,7 @@ import {
   ScreenOrientation,
 } from 'expo';
 import { MenuBar, NonsenseBar } from './src/MenuBar';
+import { GameView } from "./src/GameView";
 
 const official = {
   width: 1200,
@@ -23,10 +20,10 @@ const official = {
 }
 
 ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE);
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').width;
 
-const config = (() => {
+const getConfig = () => {
+  const deviceHeight = Dimensions.get('window').height;
+  const deviceWidth = Dimensions.get('window').width;
   const game = {
     width: deviceWidth,
     height: deviceHeight,
@@ -51,38 +48,31 @@ const config = (() => {
       ...menubar,
     }
   };
-})();
+};
 
 export default class App extends React.Component {
   render() {
+    const config = getConfig();
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        flexDirection: config.menubar.direction,
+      },
+    });
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <MenuBar {...config.menubar} reload={() => this.webview.reload()} />
-        <View style={styles.main}>
-          <WebView
-            ref={ref => this.webview = ref}
-            source={{uri: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"}}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            startInLoadingState={false}
-            scalesPageToFit={true}
-            injectedJavaScript={`document.body.style.position = 'absolute'; document.body.style.top = '-77px';`}
-          />
-        </View>
+        <MenuBar {...config.menubar} reload={this._reload.bind(this)} />
+        <GameView setref={this._ref("webview")}/>
         <NonsenseBar {...config.menubar} />
       </View>
     );
   }
+  _ref(refname) {
+    return (ref) => this[refname] = ref;
+  }
+  _reload() {
+    if (!this.webview) return;
+    this.webview.reload();
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: config.menubar.direction,
-  },
-  main: {
-    flex: 1,
-    backgroundColor: "blue",
-  },
-});
