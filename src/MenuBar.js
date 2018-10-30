@@ -7,6 +7,8 @@ import {
   StyleSheet,
 } from "react-native";
 
+import Icon from "./Icon";
+
 export class MenuBar extends Component {
   render() {
     const styles = StyleSheet.create({
@@ -28,6 +30,9 @@ export class MenuBar extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.items}>
+          <TouchableHighlight style={styles.item} onLongPress={this._askReload.bind(this)}>
+            <Icon icon="menu" color="white" width={100} height={100} />
+          </TouchableHighlight>
           <TouchableHighlight style={styles.item} onLongPress={this._askReload.bind(this)}>
             <Text style={{color:"#fff"}}>{'Reload'}</Text>
           </TouchableHighlight>
