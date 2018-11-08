@@ -11,7 +11,6 @@ import {
 } from 'expo';
 import { MenuBar, NonsenseBar } from './src/MenuBar';
 import { GameView } from "./src/GameView";
-import Icon from "./src/Icon";
 
 const official = {
   width: 1200,

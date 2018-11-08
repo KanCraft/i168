@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {
   View,
-  Text,
   TouchableHighlight,
   Alert,
   StyleSheet,
@@ -9,12 +8,30 @@ import {
 
 import Icon from "./Icon";
 
+const sizer = (config, weight = 1) => {
+  return {
+    width: (() => {
+      if (config.direction != "row") {
+        return undefined;
+      }
+      return (config.width < 40) ? config.width * weight : Math.floor(config.width / 2);
+    })(),
+    height: (() => {
+      if (config.direction != "column") {
+        return undefined;
+      }
+      return (config.height < 40) ? config.height * weight : Math.floor(config.height / 2);
+    })(),
+  };
+}
+
 export class MenuBar extends Component {
   render() {
+    const size = sizer(this.props);
     const styles = StyleSheet.create({
       container: {
-        width:  this.props.direction == "row"    ? Math.round(this.props.width / 2)  : undefined,
-        height: this.props.direction == "column" ? Math.round(this.props.height / 2) : undefined,
+        width:  size.width,
+        height: size.height,
         backgroundColor: "#222",
       },
       items: {
@@ -22,22 +39,21 @@ export class MenuBar extends Component {
         flexDirection: this.props.direction == "row" ? "column" : "row",
       },
       item: {
+        width: (size.width || size.height),
+        height: (size.height || size.width),
         alignItems: "center",
         justifyContent: "center",
-        padding: 12,
       },
     });
+    const icon = {
+      width:  Math.floor((size.width || size.height) * 0.4),
+      height: Math.floor((size.height || size.width) * 0.4),
+    };
     return (
       <View style={styles.container}>
         <View style={styles.items}>
-          <TouchableHighlight style={styles.item} onLongPress={this._askReload.bind(this)}>
-            <Icon icon="menu" color="white" width={100} height={100} />
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.item} onLongPress={this._askReload.bind(this)}>
-            <Text style={{color:"#fff"}}>{'Reload'}</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.item} onLongPress={this._askReload.bind(this)}>
-            <Text style={{color:"#fff"}}>{"なんか\n便利機能"}</Text>
+          <TouchableHighlight style={styles.item} onPress={this._askReload.bind(this)}>
+            <Icon icon="reload" color="#404040" width={icon.width} height={icon.height} />
           </TouchableHighlight>
         </View>
       </View>
@@ -45,11 +61,11 @@ export class MenuBar extends Component {
   }
   _askReload() {
     Alert.alert(
-      'Reload?',
-      'Press "Yes" to reload this web page',
+      'リロードしますか？',
+      '保存されていないページの情報は破棄されます。',
       [
-        {text: 'Yes, reload', onPress: this.props.reload},
-        {text: 'Cancel', style: 'cancel'}
+        {text: 'リロードする', onPress: this.props.reload},
+        {text: 'キャンセル', style: 'cancel'}
       ],
       { cancelable: true }
     )
@@ -58,10 +74,11 @@ export class MenuBar extends Component {
 
 export class NonsenseBar extends Component {
   render() {
+    const size = sizer(this.props, 0);
     const styles = StyleSheet.create({
       container: {
-        width:  this.props.direction == "row"    ? Math.floor(this.props.width / 2)  : undefined,
-        height: this.props.direction == "column" ? Math.floor(this.props.height / 2) : undefined,
+        width:  size.width,
+        height: size.height,
         backgroundColor: "#222",
       },
     });
