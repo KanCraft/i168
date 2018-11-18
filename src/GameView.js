@@ -4,6 +4,7 @@ import {
   WebView,
   StyleSheet, 
 } from "react-native";
+import { isIPhoneX } from "./Device";
 
 export class GameView extends Component {
   render() {
@@ -11,6 +12,8 @@ export class GameView extends Component {
       main: {
         flex: 1,
         backgroundColor: "blue",
+        display: "flex",
+        flexDirection: "column",
       }
     });
     return (
@@ -24,6 +27,7 @@ export class GameView extends Component {
           scalesPageToFit={true}
           injectedJavaScript={`document.body.style.position = 'absolute'; document.body.style.top = '-77px';`}
         />
+        {isIPhoneX() ? <View style={{height: 24, backgroundColor: "#222"}} /> : null}
       </View>
     );
   }

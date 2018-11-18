@@ -7,6 +7,7 @@ import {
 } from "react-native";
 
 import Icon from "./Icon";
+import {isIPhoneX} from "./Device";
 
 const sizer = (config, weight = 1) => {
   return {
@@ -14,7 +15,8 @@ const sizer = (config, weight = 1) => {
       if (config.direction != "row") {
         return undefined;
       }
-      return (config.width < 40) ? config.width * weight : Math.floor(config.width / 2);
+      const w = (config.width < 40) ? config.width * weight : Math.floor(config.width / 2);
+      return w + (isIPhoneX() ? 20 : 0);
     })(),
     height: (() => {
       if (config.direction != "column") {
@@ -23,7 +25,7 @@ const sizer = (config, weight = 1) => {
       return (config.height < 40) ? config.height * weight : Math.floor(config.height / 2);
     })(),
   };
-}
+};
 
 export class MenuBar extends Component {
   render() {
