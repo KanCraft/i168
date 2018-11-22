@@ -2,6 +2,10 @@
   "name": "empty-project-template",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
+  "engines": {
+    "node": "9.11.2",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
