@@ -4,6 +4,8 @@ import {
   StyleSheet,
   Dimensions,
   StatusBar,
+  ViewStyle,
+  WebView,
 } from 'react-native';
 
 import {
@@ -12,16 +14,14 @@ import {
 import { MenuBar, NonsenseBar } from './src/MenuBar';
 import { GameView } from "./src/GameView";
 
-const official = {
-  width: 1200,
-  height: 720,
-  ratio: 1200/720,
-  top: 77, // ナビゲーションバーと謎の余白の合計
-}
-
-ScreenOrientation.allow(ScreenOrientation.Orientation.LANDSCAPE);
 
 const getConfig = () => {
+  const official = {
+    width: 1200,
+    height: 720,
+    ratio: 1200/720,
+    top: 77, // ナビゲーションバーと謎の余白の合計
+  }
   const deviceHeight = Dimensions.get('window').height;
   const deviceWidth = Dimensions.get('window').width;
   const game = {
@@ -50,26 +50,39 @@ const getConfig = () => {
   };
 };
 
-export default class App extends React.Component {
+export default class App extends React.Component<{}, {config:any}> {
+  public webview?: WebView;
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      config: getConfig(),
+    };
+  }
+  async componentDidMount() {
+    // FIXME: v31、はよきて
+    // https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/expo
+    await ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);    
+    this.setState({config: getConfig()});
+  }
   render() {
-    const config = getConfig();
+    const config = this.state.config;
     const styles = StyleSheet.create({
       container: {
         flex: 1,
         flexDirection: config.menubar.direction,
-      },
+      } as ViewStyle,
     });
     return (
       <View style={styles.container}>
         <StatusBar hidden />
         <MenuBar {...config.menubar} reload={this._reload.bind(this)} />
-        <GameView setref={this._ref("webview")}/>
+        <GameView setref={this._ref()}/>
         <NonsenseBar {...config.menubar} />
       </View>
     );
   }
-  _ref(refname) {
-    return (ref) => this[refname] = ref;
+  _ref() {
+    return (ref: WebView) => this.webview = ref;
   }
   _reload() {
     if (!this.webview) return;

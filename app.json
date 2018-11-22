@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "i168",
-    "version": "1.0.6",
-    "description": "KanColleWidget for iPhone / Android",
+    "description": "This project is really great.",
     "slug": "i168",
     "privacy": "public",
-    "sdkVersion": "30.0.0",
+    "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
-    "orientation": "landscape",
+    "version": "1.0.0",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -21,11 +21,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.otiai10.i168",
       "supportsTablet": true
-    },
-    "android": {
-      "package": "com.otiai10.i168"
     }
   }
 }

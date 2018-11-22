@@ -4,10 +4,11 @@ import {
   WebView,
   StyleSheet, 
 } from "react-native";
-import { isIPhoneX } from "./Device";
+import { isIPhoneX } from "./Device/index";
 
-export class GameView extends Component {
+export class GameView extends Component<{setref:(ref:any) => any}> {
   render() {
+    const {setref} = this.props;
     const styles = StyleSheet.create({
       main: {
         flex: 1,
@@ -19,7 +20,7 @@ export class GameView extends Component {
     return (
       <View style={styles.main}>
         <WebView
-          ref={this.props.setref}
+          ref={setref}
           source={{uri: "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"}}
           javaScriptEnabled={true}
           domStorageEnabled={true}

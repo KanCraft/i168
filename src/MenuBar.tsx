@@ -7,49 +7,48 @@ import {
 } from "react-native";
 
 import Icon from "./Icon";
-import {isIPhoneX} from "./Device";
+import {isIPhoneX} from "./Device/index";
 
-const sizer = (config, weight = 1) => {
-  return {
-    width: (() => {
-      if (config.direction != "row") {
-        return undefined;
-      }
-      const w = (config.width < 40) ? config.width * weight : Math.floor(config.width / 2);
-      return w + (isIPhoneX() ? 20 : 0);
-    })(),
-    height: (() => {
-      if (config.direction != "column") {
-        return undefined;
-      }
-      return (config.height < 40) ? config.height * weight : Math.floor(config.height / 2);
-    })(),
-  };
+const sizer = (config: any, weight = 1): {width?: number, height?: number} => {
+  const width = ((): number => {
+    if (config.direction != "row") return 0;
+    const w = (config.width < 40) ? config.width * weight : Math.floor(config.width / 2);
+    return w + (isIPhoneX() ? 20 : 0);
+  })();
+  const height = ((): number => {
+    if (config.direction != "column") return 0;
+    return (config.height < 40) ? config.height * weight : Math.floor(config.height / 2);
+  })();
+  const size: {width?:number, height?:number} = {};
+  if (width) size.width = width;
+  if (height) size.height = height;
+  return size;
 };
 
-export class MenuBar extends Component {
+export class MenuBar extends Component<{direction:string, reload: () => void}> {
   render() {
-    const size = sizer(this.props);
+    const {direction} = this.props;
+    const {width, height} = sizer(this.props);
     const styles = StyleSheet.create({
       container: {
-        width:  size.width,
-        height: size.height,
+        width,
+        height,
         backgroundColor: "#222",
       },
       items: {
         flex: 1,
-        flexDirection: this.props.direction == "row" ? "column" : "row",
+        flexDirection: direction == "row" ? "column" : "row",
       },
       item: {
-        width: (size.width || size.height),
-        height: (size.height || size.width),
+        width: (width || height),
+        height: (height || width),
         alignItems: "center",
         justifyContent: "center",
       },
     });
     const icon = {
-      width:  Math.floor((size.width || size.height) * 0.4),
-      height: Math.floor((size.height || size.width) * 0.4),
+      width:  Math.floor(((width  || height) as number) * 0.4),
+      height: Math.floor(((height || width) as number) * 0.4),
     };
     return (
       <View style={styles.container}>
