@@ -14,22 +14,24 @@
     "test": "jest"
   },
   "dependencies": {
-    "expo": "^31.0.2",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz"
+    "expo": "^31.0.6",
+    "react": "16.6.3",
+    "react-native": "^0.57.8"
   },
   "devDependencies": {
     "@types/expo": "^30.0.2",
-    "@types/jest": "^23.3.9",
-    "@types/react": "^16.7.6",
-    "@types/react-native": "^0.57.12",
+    "@types/jest": "^23.3.10",
+    "@types/react": "^16.7.17",
+    "@types/react-native": "^0.57.18",
     "babel-jest": "^23.6.0",
     "babel-preset-expo": "^5.0.0",
-    "babel-preset-react-native": "^4.0.1",
-    "expo-cli": "^2.4.0",
+    "babel-preset-react-native": "^5.0.2",
+    "expo-cli": "^2.6.13",
     "jest": "^23.6.0",
-    "ts-jest": "^23.10.4",
-    "typescript": "^3.1.6"
+    "metro-react-native-babel-preset": "^0.48.5",
+    "schedule": "^0.5.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
   },
   "jest": {
     "preset": "react-native",
