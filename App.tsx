@@ -1,10 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { ScreenOrientation } from 'expo';
+
+import { LeftBar, RightBar } from "./components/SideBar";
+import Game from './components/Game';
 
 export default function App() {
+  ScreenOrientation.allowAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
   return (
     <View style={styles.container}>
-      <Text>i168!</Text>
+      <LeftBar />
+      <Game />
+      <RightBar />
     </View>
   );
 }
@@ -12,8 +19,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'row',
   },
 });
