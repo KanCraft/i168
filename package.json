@@ -1,53 +1,25 @@
 {
-  "name": "empty-project-template",
   "main": "node_modules/expo/AppEntry.js",
-  "private": true,
-  "engines": {
-    "node": "9.11.2",
-    "npm": "6.4.1"
-  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject",
-    "test": "jest"
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^31.0.6",
-    "react": "16.6.3",
-    "react-native": "^0.57.8"
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4"
   },
   "devDependencies": {
-    "@types/expo": "^30.0.2",
-    "@types/jest": "^23.3.10",
-    "@types/react": "^16.7.17",
-    "@types/react-native": "^0.57.18",
-    "babel-jest": "^23.6.0",
-    "babel-preset-expo": "^5.0.0",
-    "babel-preset-react-native": "^5.0.2",
-    "expo-cli": "^2.6.13",
-    "jest": "^23.6.0",
-    "metro-react-native-babel-preset": "^0.48.5",
-    "schedule": "^0.5.0",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "@types/react": "^16.8.19",
+    "@types/react-native": "^0.57.60",
+    "babel-preset-expo": "^5.1.1",
+    "expo": "^33.0.7",
+    "expo-cli": "^2.21.2",
+    "typescript": "^3.4.5"
   },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/lib/"
-    ]
-  }
+  "private": true
 }
