@@ -6,7 +6,7 @@ import { LeftBar, RightBar } from "./components/SideBar";
 import Game from './components/Game';
 
 export default function App() {
-  ScreenOrientation.allowAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
   return (
     <View style={styles.container}>
       <LeftBar />
