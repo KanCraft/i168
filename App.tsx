@@ -11,7 +11,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <LeftBar actions={[
-        { name: 'refresh', onHold: () => game.current.reload() }
+        { name: 'refresh', onHold: () => game.current.reload() },
+        { name: 'photo-camera', onHold: () => game.current.reload() }
       ]}/>
       <Game ref={game} />
       <RightBar />

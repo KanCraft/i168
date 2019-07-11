@@ -1,12 +1,30 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
+import { View, TouchableHighlight, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function Item({ name, size = 100, color = '#f0f0f0', hold = () => {}, touch = () => {} }) {
+export interface ItemProps {
+  name: string;
+  icon?: string;
+  size?: number;
+  color?: string;
+  onTouch?: () => void;
+  onHold?: () => void;
+}
+
+export default function Item({ name, icon, size = 40, color = '#444', onHold = () => {}, onTouch = () => {} } : ItemProps) {
     return (
-        <TouchableHighlight onLongPress={hold} onPress={touch} >
-            <Icon name={name} size={size} color={color} />
-        </TouchableHighlight>
+        <View style={style.item}>
+            <TouchableHighlight onLongPress={onHold} onPress={onTouch}>
+                <Icon name={icon || name} size={size} color={color} />
+            </TouchableHighlight>
+        </View>
     );
 }
+
+const style = StyleSheet.create({
+    item: {
+        paddingTop: 20,
+        paddingBottom: 20,
+    },
+});
