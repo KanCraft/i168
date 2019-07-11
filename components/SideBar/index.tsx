@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Item from './Item';
+import Item, { ItemProps } from './Item';
 
-export default function SideBar({ actions = [] }) {
+export default function SideBar({ actions = [] }: { actions?: ItemProps[] }): ReactElement {
   const items = actions.length ? <View style={style.items}>
-    {actions.map(btn => <Item key={btn.name} {...btn} />)}
+    {actions.map((btn): ReactElement => <Item key={btn.name} {...btn} />)}
   </View> : null;
   return <View style={style.container}>{items}</View>;
 }
 
-export function LeftBar({ actions = [] }) {
+export function LeftBar({ actions = [] }: { actions?: ItemProps[] }): ReactElement {
   return (
     <SideBar actions={actions} />
   );

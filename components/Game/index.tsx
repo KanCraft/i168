@@ -1,14 +1,14 @@
-import React, { useImperativeHandle, forwardRef, useRef, MutableRefObject, RefObject } from 'react';
+import React, { useImperativeHandle, forwardRef, useRef, RefObject, ReactElement } from 'react';
 import {
   View,
   WebView,
 } from 'react-native';
 import style from './style';
 
-function Game(props, ref) {
-  var webview: RefObject<WebView> = useRef();
-  useImperativeHandle(ref, () => ({
-    reload() { webview.current.reload(); },
+function Game(props, ref): ReactElement {
+  const webview: RefObject<WebView> = useRef();
+  useImperativeHandle(ref, (): { reload: () => void } => ({
+    reload(): void { webview.current.reload(); },
   }));
   return (
     <View style={style.container}>
@@ -28,7 +28,8 @@ function Game(props, ref) {
 }
 export default forwardRef(Game);
 
-const KanColleURL = `http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/`;
+const KanColleURL = `https://google.com`;
+// const KanColleURL = `http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/`;
 
 const webInitScript = `
   document.body.style.position = 'absolute';
