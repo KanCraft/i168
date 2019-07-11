@@ -28,8 +28,8 @@ function Game(props, ref): ReactElement {
 }
 export default forwardRef(Game);
 
-const KanColleURL = `https://google.com`;
-// const KanColleURL = `http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/`;
+// const KanColleURL = `https://google.com`;
+const KanColleURL = `http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/`;
 
 const webInitScript = `
   document.body.style.position = 'absolute';

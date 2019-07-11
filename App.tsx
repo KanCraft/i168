@@ -12,7 +12,7 @@ export default function App() {
     <View style={styles.container}>
       <LeftBar actions={[
         { name: 'refresh', onHold: () => game.current.reload() },
-        { name: 'photo-camera', onHold: () => game.current.reload() }
+        // { name: 'photo-camera', onHold: () => game.current.reload() }
       ]}/>
       <Game ref={game} />
       <RightBar />
