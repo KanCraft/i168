@@ -1,18 +1,34 @@
-import {StyleSheet} from 'react-native';
+import { Constants } from 'expo';
+import { StyleSheet, Dimensions, ViewStyle } from 'react-native';
 
-const style = StyleSheet.create({
-  container: {
-    width: 800 - (22 * 7 - 8),
+const KanColleGameAspectRatio = (1200 / 720);
+
+const style = (() => {
+  const name: string = Constants.deviceName;
+  let { width, height } = Dimensions.get('window');
+  if (width < height) [height, width] = [width, height];
+  const container: ViewStyle = {
+    height,
+    width,
     backgroundColor: 'pink',
     display: 'flex',
-  },
-  main: {
-    flex: 1,
-  },
-  bottom: {
-    height: 22,
+  };
+  const bottom: ViewStyle = {
     backgroundColor: '#101014',
-  },
-});
+    height: 0,
+  };
+  switch (name) {
+    case 'iPhone XR':
+      bottom.height = 22;
+      container.width = (height - bottom.height) * KanColleGameAspectRatio;
+    default:
+      container.width = height * KanColleGameAspectRatio;
+  }
+  return StyleSheet.create({
+    container,
+    main: { flex: 1, },
+    bottom,
+  });
+})();
 
 export default style;

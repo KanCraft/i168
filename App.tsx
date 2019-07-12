@@ -5,8 +5,9 @@ import { ScreenOrientation } from 'expo';
 import { LeftBar, RightBar } from "./components/SideBar";
 import Game from './components/Game';
 
+ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+
 export default function App() {
-  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
   const game = useRef<{ reload }>();
   return (
     <View style={styles.container}>
