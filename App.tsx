@@ -1,22 +1,24 @@
 import React, { useRef } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, WebView } from 'react-native';
 import { ScreenOrientation } from 'expo';
 
-import { LeftBar, RightBar } from "./components/SideBar";
+import Layout, { arrangeActions } from "./components/Layout";
+import SideBar from "./components/SideBar";
 import Game from './components/Game';
 
 ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
 
 export default function App() {
-  const game = useRef<{ reload }>();
+  const webview = useRef<WebView>();
+  const [left, right] = arrangeActions({
+    reload: { name: 'refresh', onHold: () => webview.current.reload() },
+    screenshot: { name: 'photo-camera', onTouch: () => alert('TODO: スクショ') },
+  });
   return (
     <View style={styles.container}>
-      <LeftBar actions={[
-        { name: 'refresh', onHold: () => game.current.reload() },
-        // { name: 'photo-camera', onHold: () => game.current.reload() }
-      ]}/>
-      <Game ref={game} />
-      <RightBar />
+      <SideBar actions={left} style={Layout.leftbar} />
+      <Game webview={webview} styles={Layout} />
+      <SideBar actions={right} style={Layout.rightbar} />
     </View>
   );
 }

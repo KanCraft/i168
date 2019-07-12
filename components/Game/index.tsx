@@ -1,20 +1,15 @@
-import React, { useImperativeHandle, forwardRef, useRef, RefObject, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import {
   View,
   WebView,
 } from 'react-native';
-import style from './style';
 
-function Game(props, ref): ReactElement {
-  const webview: RefObject<WebView> = useRef();
-  useImperativeHandle(ref, (): { reload: () => void } => ({
-    reload(): void { webview.current.reload(); },
-  }));
+function Game({ styles, webview }): ReactElement {
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <WebView
         ref={webview}
-        style={style.main}
+        style={styles.main}
         source={{uri: KanColleURL}}
         javaScriptEnabled={true}
         domStorageEnabled={true}
@@ -22,11 +17,12 @@ function Game(props, ref): ReactElement {
         scalesPageToFit={true}
         injectedJavaScript={webInitScript}
       />
-      <View style={style.bottom} />
+      <View style={styles.homebar} />
     </View>
   );
 }
-export default forwardRef(Game);
+export default Game;
+// export default forwardRef(Game);
 
 // const KanColleURL = `https://google.com`;
 const KanColleURL = `http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/`;
