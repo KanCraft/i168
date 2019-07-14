@@ -2,10 +2,17 @@ import React, { ReactElement, forwardRef, useImperativeHandle, useRef } from 're
 import {
   View,
   WebView,
+  ViewStyle,
 } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 
-function Game({ styles }, ref): ReactElement {
+declare interface Styles {
+  container: ViewStyle;
+  main: ViewStyle;
+  homebar: ViewStyle;
+}
+
+function Game({ styles }: { styles: Styles } , ref): ReactElement {
   const webview = useRef<WebView>();
   useImperativeHandle(ref, () => ({
     reload: () => webview.current.reload(),

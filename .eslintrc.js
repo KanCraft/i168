@@ -28,4 +28,9 @@ module.exports = {
         "@typescript-eslint/no-use-before-define": [0],
         "@typescript-eslint/explicit-function-return-type": [0],
     },
+    "settings": {
+        "react": {
+            "version": require("react/package.json").version,
+        },
+    },
 };
