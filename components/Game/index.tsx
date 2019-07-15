@@ -6,31 +6,24 @@ import {
 } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 
-declare interface Styles {
-  container: ViewStyle;
-  main: ViewStyle;
-  homebar: ViewStyle;
-}
-
-function Game({ styles }: { styles: Styles } , ref): ReactElement {
+function Game({ style }: { style: ViewStyle } , ref): ReactElement {
   const webview = useRef<WebView>();
   useImperativeHandle(ref, () => ({
     reload: () => webview.current.reload(),
     screenshot: () => captureRef(webview),
   }));
   return (
-    <View style={styles.container}>
+    <View style={{width: style.width, height: style.height}}>
       <WebView
         ref={webview}
-        style={styles.main}
-        source={{uri: KanColleURL}}
+        style={style}
+        source={{ uri: KanColleURL }}
         javaScriptEnabled={true}
         domStorageEnabled={true}
         startInLoadingState={false}
         scalesPageToFit={true}
         injectedJavaScript={webInitScript}
       />
-      <View style={styles.homebar} />
     </View>
   );
 }
