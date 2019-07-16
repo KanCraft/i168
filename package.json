@@ -6,10 +6,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "deploy": "expo publish",
     "lint": "eslint ./components/**/*.tsx"
   },
   "dependencies": {
-    "expo-constants": "^5.0.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",

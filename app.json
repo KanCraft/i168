@@ -10,7 +10,7 @@
       "android",
       "web"
     ],
-    "version": "1.1.0",
+    "version": "1.1.2",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "splash": {
@@ -26,6 +26,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "githubUrl": "https://github.com/otiai10/i168"
   }
 }
