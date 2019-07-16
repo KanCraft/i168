@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "deploy": "expo publish",
+    "build:ios": "expo build:ios",
     "lint": "eslint ./components/**/*.tsx"
   },
   "dependencies": {

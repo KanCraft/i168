@@ -25,7 +25,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.otiai10.i168"
     },
     "githubUrl": "https://github.com/otiai10/i168"
   }
