@@ -2,6 +2,7 @@
   "expo": {
     "name": "i168",
     "slug": "i168",
+    "description": "iPhoneでも快適に『艦これ』がしたいよ",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
