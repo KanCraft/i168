@@ -26,7 +26,15 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.otiai10.i168"
+      "bundleIdentifier": "com.otiai10.i168",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true,
+          "NSAllowsArbitraryLoadsForMedia": true,
+          "NSAllowsArbitraryLoadsInWebContent": true,
+          "NSAllowsLocalNetworking": true
+        }
+      }
     },
     "githubUrl": "https://github.com/otiai10/i168"
   }
