@@ -17,6 +17,7 @@ function Game({ style }: { style: ViewStyle } , ref): ReactElement {
       <WebView
         ref={webview}
         style={style}
+        useWebKit={true}
         source={{ uri: KanColleURL }}
         javaScriptEnabled={true}
         domStorageEnabled={true}
