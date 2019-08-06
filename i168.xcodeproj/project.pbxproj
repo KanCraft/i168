@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD05DE3E22F90DC400886A36 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD05DE3D22F90DC400886A36 /* WebKit.framework */; };
 		AD866A0622F90A130009BED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD866A0522F90A130009BED8 /* AppDelegate.swift */; };
 		AD866A0822F90A130009BED8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD866A0722F90A130009BED8 /* ViewController.swift */; };
 		AD866A0B22F90A130009BED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD866A0922F90A130009BED8 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD05DE3D22F90DC400886A36 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AD866A0222F90A130009BED8 /* i168.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = i168.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD866A0522F90A130009BED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD866A0722F90A130009BED8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD05DE3E22F90DC400886A36 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD05DE3C22F90DC300886A36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD05DE3D22F90DC400886A36 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AD8669F922F90A130009BED8 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +94,7 @@
 				AD866A1C22F90A140009BED8 /* i168Tests */,
 				AD866A2722F90A140009BED8 /* i168UITests */,
 				AD866A0322F90A130009BED8 /* Products */,
+				AD05DE3C22F90DC300886A36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -439,6 +451,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9MYY4MNF2Y;
 				INFOPLIST_FILE = i168/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9MYY4MNF2Y;
 				INFOPLIST_FILE = i168/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
