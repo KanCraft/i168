@@ -26,7 +26,42 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeg-Yf-L9W" userLabel="LeftSpace">
                                                 <rect key="frame" x="0.0" y="0.0" width="120.5" height="393"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTA-bE-LTe" userLabel="LeftActions">
+                                                        <rect key="frame" x="44" y="0.0" width="76.5" height="393"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hr-Ki-Wav" userLabel="Action_01">
+                                                                <rect key="frame" x="0.0" y="0.0" width="76.5" height="76.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="m8w-EB-bFS">
+                                                                        <rect key="frame" x="8" y="8" width="60.5" height="60.5"/>
+                                                                        <state key="normal" title="RELOAD"/>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="m8w-EB-bFS" firstAttribute="top" secondItem="9Hr-Ki-Wav" secondAttribute="top" constant="8" id="8GA-ws-tE7"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="m8w-EB-bFS" secondAttribute="trailing" constant="8" id="8GE-JF-b5E"/>
+                                                                    <constraint firstItem="m8w-EB-bFS" firstAttribute="leading" secondItem="9Hr-Ki-Wav" secondAttribute="leading" constant="8" id="Rn3-Lx-BI5"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="m8w-EB-bFS" secondAttribute="bottom" constant="8" id="YEB-9d-92P"/>
+                                                                    <constraint firstAttribute="width" secondItem="9Hr-Ki-Wav" secondAttribute="height" multiplier="1:1" id="kHS-cy-UUI"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="9Hr-Ki-Wav" firstAttribute="top" secondItem="NTA-bE-LTe" secondAttribute="top" id="Nf5-Qg-C3k"/>
+                                                            <constraint firstItem="9Hr-Ki-Wav" firstAttribute="leading" secondItem="NTA-bE-LTe" secondAttribute="leading" id="X8o-Y5-96n"/>
+                                                            <constraint firstAttribute="trailing" secondItem="9Hr-Ki-Wav" secondAttribute="trailing" id="bat-vX-WRU"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="NTA-bE-LTe" firstAttribute="bottom" secondItem="Te2-XR-rS2" secondAttribute="bottom" id="4m9-hx-BvW"/>
+                                                    <constraint firstItem="NTA-bE-LTe" firstAttribute="leading" secondItem="Te2-XR-rS2" secondAttribute="leading" id="Mop-Io-u4e"/>
+                                                    <constraint firstItem="Te2-XR-rS2" firstAttribute="trailing" secondItem="NTA-bE-LTe" secondAttribute="trailing" id="ZsF-Kf-vqZ"/>
+                                                    <constraint firstItem="NTA-bE-LTe" firstAttribute="top" secondItem="Te2-XR-rS2" secondAttribute="top" id="ltu-yh-ncY"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="safeArea" id="Te2-XR-rS2"/>
                                             </view>
                                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXg-bn-v8K">
                                                 <rect key="frame" x="120.5" y="0.0" width="655" height="393"/>
@@ -42,6 +77,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3y-Ac-O5Z" userLabel="RightSpace">
                                                 <rect key="frame" x="775.5" y="0.0" width="120.5" height="393"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <viewLayoutGuide key="safeArea" id="bK2-OB-C5u"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
