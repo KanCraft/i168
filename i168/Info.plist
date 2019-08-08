@@ -49,5 +49,7 @@
 	<array>
 		<string>Font Awesome 5-Free-Solid-900</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>スクリーンショットを保存します</string>
 </dict>
 </plist>

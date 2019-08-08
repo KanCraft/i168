@@ -32,6 +32,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
     }
 
+    @IBAction func onCameraButtonTouchDown(_ sender: Any) {
+        UIGraphicsBeginImageContext(self.game.bounds.size)
+        self.game.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
+    }
+
     @objc func reloadButtonLongPressed() {
         self.loadGame()
     }
