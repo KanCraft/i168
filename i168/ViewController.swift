@@ -12,14 +12,19 @@ import WebKit
 class ViewController: UIViewController, WKNavigationDelegate {
 
     let KCURL = "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"
+    // let KCURL = "http://google.com"
 
     @IBOutlet weak var game: WKWebView!
+    @IBOutlet weak var reloadButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.game.navigationDelegate = self
         let req = URLRequest(url: URL(string: KCURL)!)
         self.game.load(req)
+
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(reloadButtonLongPressed))
+        self.reloadButton.addGestureRecognizer(recognizer)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -39,6 +44,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
             """
             webView.evaluateJavaScript(script)
         }
+    }
+
+    @objc func reloadButtonLongPressed() {
+        let req = URLRequest(url: URL(string: KCURL)!)
+        self.game.load(req)
     }
 }
 

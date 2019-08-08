@@ -35,6 +35,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="m8w-EB-bFS">
                                                                         <rect key="frame" x="8" y="8" width="60.5" height="60.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                         <state key="normal" title="RELOAD"/>
                                                                     </button>
                                                                 </subviews>
@@ -115,6 +116,7 @@
                     </view>
                     <connections>
                         <outlet property="game" destination="eXg-bn-v8K" id="iQO-Yl-xqm"/>
+                        <outlet property="reloadButton" destination="m8w-EB-bFS" id="GfO-aE-JGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
