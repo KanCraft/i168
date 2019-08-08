@@ -39,6 +39,15 @@ class ViewController: UIViewController, WKNavigationDelegate {
         UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
     }
 
+    @IBAction func onHelpButtonTouchDown(_ sender: Any) {
+        let alert = UIAlertController(title: "ヘルプ", message: "i168のwikiを開きます", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action: UIAlertAction!) in
+            UIApplication.shared.open(URL(string: "https://github.com/otiai10/i168/wiki")!, options: [:], completionHandler: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     @objc func reloadButtonLongPressed() {
         self.loadGame()
     }

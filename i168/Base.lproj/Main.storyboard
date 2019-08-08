@@ -110,10 +110,35 @@
                                                                     <constraint firstAttribute="width" secondItem="GuW-w4-WHG" secondAttribute="height" multiplier="1:1" id="nUV-KO-ROv"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gi8-pZ-qia" userLabel="Action_03_Help">
+                                                                <rect key="frame" x="0.0" y="316.5" width="76.5" height="76.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idk-3n-asC" userLabel="Help Button">
+                                                                        <rect key="frame" x="8" y="8" width="60.5" height="60.5"/>
+                                                                        <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="29"/>
+                                                                        <state key="normal" title="">
+                                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="onHelpButtonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="6uj-5E-YEo"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="Idk-3n-asC" firstAttribute="top" secondItem="gi8-pZ-qia" secondAttribute="top" constant="8" id="3qS-en-jUN"/>
+                                                                    <constraint firstAttribute="width" secondItem="gi8-pZ-qia" secondAttribute="height" multiplier="1:1" id="P2c-zd-9my"/>
+                                                                    <constraint firstItem="Idk-3n-asC" firstAttribute="leading" secondItem="gi8-pZ-qia" secondAttribute="leading" constant="8" id="b0H-Xp-QGE"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Idk-3n-asC" secondAttribute="trailing" constant="8" id="gb4-Jl-RSl"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Idk-3n-asC" secondAttribute="bottom" constant="8" id="q67-k2-fRZ"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="GuW-w4-WHG" firstAttribute="top" secondItem="WAL-5w-WTk" secondAttribute="top" id="2QY-uG-Nv2"/>
                                                             <constraint firstAttribute="trailing" secondItem="GuW-w4-WHG" secondAttribute="trailing" id="AAc-eE-b8l"/>
+                                                            <constraint firstAttribute="trailing" secondItem="gi8-pZ-qia" secondAttribute="trailing" id="O7Q-gR-sSV"/>
+                                                            <constraint firstAttribute="bottom" secondItem="gi8-pZ-qia" secondAttribute="bottom" id="Qcl-Km-TDb"/>
+                                                            <constraint firstItem="gi8-pZ-qia" firstAttribute="leading" secondItem="WAL-5w-WTk" secondAttribute="leading" id="b3P-xt-zSe"/>
                                                             <constraint firstItem="GuW-w4-WHG" firstAttribute="leading" secondItem="WAL-5w-WTk" secondAttribute="leading" id="hX3-y9-qck"/>
                                                         </constraints>
                                                     </view>
