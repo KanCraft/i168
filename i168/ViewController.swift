@@ -20,9 +20,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.game.navigationDelegate = self
-        let req = URLRequest(url: URL(string: KCURL)!)
-        self.game.load(req)
-
+        self.loadGame()
         let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(reloadButtonLongPressed))
         self.reloadButton.addGestureRecognizer(recognizer)
     }
@@ -30,25 +28,33 @@ class ViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let url = webView.url!
         if url.absoluteString == KCURL {
-            let script = """
-                // i168: Scale Page To Fit
-                var meta = document.createElement('meta');
-                meta.name = 'viewport';
-                meta.content = 'width=device-width';
-                document.querySelector('head').appendChild(meta);
-                // i168: Hide DMM Navigation Bar
-                document.body.style.position = 'absolute';
-                document.body.style.top = '-77px';
-                // i168: Disable Scroll
-                document.body.style.overflow = 'hidden';
-            """
-            webView.evaluateJavaScript(script)
+            self.injectJavaScript()
         }
     }
 
     @objc func reloadButtonLongPressed() {
+        self.loadGame()
+    }
+
+    private func loadGame() {
         let req = URLRequest(url: URL(string: KCURL)!)
         self.game.load(req)
+    }
+
+    private func injectJavaScript() {
+        let script = """
+            // i168: Scale Page To Fit
+            var meta = document.createElement('meta');
+            meta.name = 'viewport';
+            meta.content = 'width=device-width';
+            document.querySelector('head').appendChild(meta);
+            // i168: Hide DMM Navigation Bar
+            document.body.style.position = 'absolute';
+            document.body.style.top = '-77px';
+            // i168: Disable Scroll
+            document.body.style.overflow = 'hidden';
+        """
+        self.game.evaluateJavaScript(script)
     }
 }
 
