@@ -84,7 +84,44 @@
                                             </wkWebView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3y-Ac-O5Z" userLabel="RightSpace">
                                                 <rect key="frame" x="775.5" y="0.0" width="120.5" height="393"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAL-5w-WTk" userLabel="RightActions">
+                                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="393"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuW-w4-WHG" userLabel="Action_02_Camera">
+                                                                <rect key="frame" x="0.0" y="0.0" width="76.5" height="76.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7S-xh-wpP" userLabel="Camera Button">
+                                                                        <rect key="frame" x="8" y="8" width="60.5" height="60.5"/>
+                                                                        <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="28"/>
+                                                                        <state key="normal" title="">
+                                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="M7S-xh-wpP" firstAttribute="top" secondItem="GuW-w4-WHG" secondAttribute="top" constant="8" id="2A2-Ew-az4"/>
+                                                                    <constraint firstItem="M7S-xh-wpP" firstAttribute="leading" secondItem="GuW-w4-WHG" secondAttribute="leading" constant="8" id="4fx-MX-MRi"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="M7S-xh-wpP" secondAttribute="bottom" constant="8" id="meY-C1-2tG"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="M7S-xh-wpP" secondAttribute="trailing" constant="8" id="nGB-fj-hmu"/>
+                                                                    <constraint firstAttribute="width" secondItem="GuW-w4-WHG" secondAttribute="height" multiplier="1:1" id="nUV-KO-ROv"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="GuW-w4-WHG" firstAttribute="top" secondItem="WAL-5w-WTk" secondAttribute="top" id="2QY-uG-Nv2"/>
+                                                            <constraint firstAttribute="trailing" secondItem="GuW-w4-WHG" secondAttribute="trailing" id="AAc-eE-b8l"/>
+                                                            <constraint firstItem="GuW-w4-WHG" firstAttribute="leading" secondItem="WAL-5w-WTk" secondAttribute="leading" id="hX3-y9-qck"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="WAL-5w-WTk" firstAttribute="top" secondItem="bK2-OB-C5u" secondAttribute="top" id="2md-gO-cSd"/>
+                                                    <constraint firstItem="WAL-5w-WTk" firstAttribute="leading" secondItem="bK2-OB-C5u" secondAttribute="leading" id="78c-9I-Dvi"/>
+                                                    <constraint firstItem="bK2-OB-C5u" firstAttribute="trailing" secondItem="WAL-5w-WTk" secondAttribute="trailing" id="U0l-nD-msl"/>
+                                                    <constraint firstItem="WAL-5w-WTk" firstAttribute="bottom" secondItem="bK2-OB-C5u" secondAttribute="bottom" id="oEf-PW-T7X"/>
+                                                </constraints>
                                                 <viewLayoutGuide key="safeArea" id="bK2-OB-C5u"/>
                                             </view>
                                         </subviews>
