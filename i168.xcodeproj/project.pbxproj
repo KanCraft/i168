@@ -16,6 +16,7 @@
 		AD866A1322F90A140009BED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD866A1122F90A140009BED8 /* LaunchScreen.storyboard */; };
 		AD866A1E22F90A140009BED8 /* i168Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD866A1D22F90A140009BED8 /* i168Tests.swift */; };
 		AD866A2922F90A140009BED8 /* i168UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD866A2822F90A140009BED8 /* i168UITests.swift */; };
+		ADF1F73222FBE6B30023800D /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = ADF1F73122FBE6B30023800D /* Font Awesome 5 Free-Solid-900.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		AD866A2422F90A140009BED8 /* i168UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = i168UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD866A2822F90A140009BED8 /* i168UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i168UITests.swift; sourceTree = "<group>"; };
 		AD866A2A22F90A140009BED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADF1F73122FBE6B30023800D /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		AD866A0422F90A130009BED8 /* i168 */ = {
 			isa = PBXGroup;
 			children = (
+				ADF1F73022FBE6580023800D /* fonts */,
 				AD866A0522F90A130009BED8 /* AppDelegate.swift */,
 				AD866A0722F90A130009BED8 /* ViewController.swift */,
 				AD866A0922F90A130009BED8 /* Main.storyboard */,
@@ -138,6 +141,14 @@
 				AD866A2A22F90A140009BED8 /* Info.plist */,
 			);
 			path = i168UITests;
+			sourceTree = "<group>";
+		};
+		ADF1F73022FBE6580023800D /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ADF1F73122FBE6B30023800D /* Font Awesome 5 Free-Solid-900.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 				AD866A1322F90A140009BED8 /* LaunchScreen.storyboard in Resources */,
 				AD866A1022F90A140009BED8 /* Assets.xcassets in Resources */,
 				AD866A0B22F90A130009BED8 /* Main.storyboard in Resources */,
+				ADF1F73222FBE6B30023800D /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
