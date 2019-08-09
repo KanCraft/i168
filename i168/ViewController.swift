@@ -62,7 +62,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
             // i168: Scale Page To Fit
             var meta = document.createElement('meta');
             meta.name = 'viewport';
-            meta.content = 'width=device-width';
+            meta.content = 'width=device-width, user-scalable=0';
             document.querySelector('head').appendChild(meta);
             // i168: Hide DMM Navigation Bar
             document.body.style.position = 'absolute';
