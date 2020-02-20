@@ -27,6 +27,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let url = webView.url!
+        self.setCookie()
         if url.absoluteString == KCURL {
             self.injectJavaScript()
         }
@@ -69,6 +70,15 @@ class ViewController: UIViewController, WKNavigationDelegate {
             document.body.style.top = '-77px';
             // i168: Disable Scroll
             document.body.style.overflow = 'hidden';
+        """
+        self.game.evaluateJavaScript(script)
+    }
+
+    // https://kancolle.fandom.com/wiki/Tutorial:_Connection
+    private func setCookie() {
+        let script = """
+            expires=new Date(+new Date()+31536e6).toUTCString()
+            document.cookie=`ckcy=1;expires=${expires};path=/netgame;domain=.dmm.com`
         """
         self.game.evaluateJavaScript(script)
     }
